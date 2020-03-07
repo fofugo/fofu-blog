@@ -1,0 +1,35 @@
+{{define "board"}}
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+  </head>
+  <body>
+  {{template "nav"}}
+    <table class="table table-bordered table-dark">
+      <thead>
+        <col width="10%">
+        <col width="20%">
+        <col width="70%">
+        <tr>
+          <th>#</th>
+          <th>Catogory</th>
+          <th>Title</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{range $board := .}}
+          <tr>
+            <th>{{$board.Id}}</th>
+            <th>{{$board.Category}}</th>
+            <th>{{$board.Title}}</th>
+          </tr>
+        {{end}}
+      </tbody>
+    </table>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="js/bootstrap.js"></script>
+  </body>
+</html>
+{{end}}
