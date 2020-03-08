@@ -39,10 +39,10 @@ func main() {
 		Dialect:  "mysql",
 		Host:     "127.0.0.1",
 		Port:     "3306",
-		Username: "",
-		Password: "",
-		Name:     "",
-		Charset:  "",
+		Username: "dongjulee",
+		Password: "djfrnf081@",
+		Name:     "fofu",
+		Charset:  "utf8",
 	}
 	db := config.DB{}
 	if err := db.Initialize(dbConfig); err != nil {
@@ -58,5 +58,6 @@ func main() {
 	// 첫 화면
 	e.Static("/", "assets")
 	e.GET("/board", handler.BoardHandler)
+	e.GET("/post", handler.PostHandler)
 	e.Logger.Fatal(e.Start(":1323"))
 }

@@ -9,15 +9,14 @@ import (
 	"gopkg.in/go-playground/validator.v10"
 )
 
-type board struct {
-	Id       int
-	Category string
-	Title    string
+type post struct {
+	Title   string
+	Content string
 }
 
-func BoardHandler(c echo.Context) error {
+func PostHandler(c echo.Context) error {
 	type queryParam struct {
-		Page int `validate:"max=100,min=0" query:"page"`
+		Id int `validate:"required" query:"id"`
 	}
 	input := queryParam{}
 	if err := c.Bind(&input); err != nil {
@@ -33,12 +32,10 @@ func BoardHandler(c echo.Context) error {
 		panic(err)
 	}
 
-	rows, _ := db.Query("SELECT id,category,title FROM board LIMIT 10 OFFSET ?", 10*input.Page)
-	var boards []board
+	rows, _ := db.Query("SELECT title,content FROM board WHERE id=?", input.Id)
+	post := post{}
 	for rows.Next() {
-		board := board{}
-		rows.Scan(&board.Id, &board.Category, &board.Title)
-		boards = append(boards, board)
+		rows.Scan(&post.Title, &post.Content)
 	}
-	return c.Render(http.StatusOK, "board", boards)
+	return c.Render(http.StatusOK, "post", post)
 }

@@ -23,7 +23,7 @@
           <tr>
             <th>{{$board.Id}}</th>
             <th>{{$board.Category}}</th>
-            <th>{{$board.Title}}</th>
+            <th><a href="post?id={{$board.Id}}">{{$board.Title}}</a></th>
           </tr>
         {{end}}
       </tbody>

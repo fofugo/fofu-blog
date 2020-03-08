@@ -1,0 +1,16 @@
+{{define "post"}}
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+  </head>
+  <body>
+    {{template "nav"}}
+    <h1>{{.Title}}</h1>
+    <p>{{.Content}}</p>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="js/bootstrap.js"></script>
+  </body>
+</html>
+{{end}}
