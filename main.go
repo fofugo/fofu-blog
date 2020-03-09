@@ -7,8 +7,8 @@ import (
 	"os"
 	"time"
 
-	"html/template"
 	"io"
+	"text/template"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/labstack/echo"
@@ -59,5 +59,6 @@ func main() {
 	e.Static("/", "assets")
 	e.GET("/board", handler.BoardHandler)
 	e.GET("/post", handler.PostHandler)
+	e.GET("/benchmark", handler.BenchmarkHandler)
 	e.Logger.Fatal(e.Start(":1323"))
 }

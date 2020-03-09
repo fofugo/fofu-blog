@@ -2,14 +2,13 @@ package handler
 
 import (
 	"database/sql"
-	"fmt"
 	"net/http"
 
 	"github.com/labstack/echo"
 	"gopkg.in/go-playground/validator.v10"
 )
 
-type post struct {
+type Post struct {
 	Title   string
 	Content string
 }
@@ -20,22 +19,21 @@ func PostHandler(c echo.Context) error {
 	}
 	input := queryParam{}
 	if err := c.Bind(&input); err != nil {
-		fmt.Println("error1")
+		panic(err)
 	}
 	validate := validator.New()
 	if err := validate.Struct(input); err != nil {
-		fmt.Println("error2")
+		panic(err)
 	}
 
 	db := c.Get("db").(*sql.DB)
 	if err := db.Ping(); err != nil {
 		panic(err)
 	}
-
-	rows, _ := db.Query("SELECT title,content FROM board WHERE id=?", input.Id)
-	post := post{}
-	for rows.Next() {
-		rows.Scan(&post.Title, &post.Content)
+	post := Post{}
+	err := db.QueryRow("SELECT title,content FROM board WHERE id=?", input.Id).Scan(&post.Title, &post.Content)
+	if err != nil {
+		panic(err)
 	}
 	return c.Render(http.StatusOK, "post", post)
 }

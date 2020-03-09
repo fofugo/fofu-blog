@@ -2,7 +2,6 @@ package handler
 
 import (
 	"database/sql"
-	"fmt"
 	"net/http"
 
 	"github.com/labstack/echo"
@@ -21,13 +20,12 @@ func BoardHandler(c echo.Context) error {
 	}
 	input := queryParam{}
 	if err := c.Bind(&input); err != nil {
-		fmt.Println("error1")
+		panic(err)
 	}
 	validate := validator.New()
 	if err := validate.Struct(input); err != nil {
-		fmt.Println("error2")
+		panic(err)
 	}
-
 	db := c.Get("db").(*sql.DB)
 	if err := db.Ping(); err != nil {
 		panic(err)
