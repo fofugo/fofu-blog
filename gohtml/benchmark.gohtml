@@ -1,0 +1,48 @@
+{{define "benchmark"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <style>
+  ul.nav-pills {
+    top: 240px;
+    position: fixed;
+  }
+  body {
+    position: relative;
+  }
+  </style>
+</head>
+{{template "nav"}}
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="1">
+{{.Context}}
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-sm-3 col-4" id="myScrollspy">
+      <ul class="nav nav-pills flex-column">
+        {{range $benchmark := .Benchmarks}}
+        <li class="nav-item">
+          <a class="nav-link" href="#{{$benchmark.Section}}">{{$benchmark.Title}}</a>
+        </li>
+        {{end}}
+      </ul>
+    </nav>
+    <div class="col-sm-9 col-8">
+      {{range $benchmark := .Benchmarks}}
+      <div id="{{$benchmark.Section}}">
+        {{$benchmark.Title}}
+        <hr>
+        {{$benchmark.Content}}
+      </div>
+      {{end}}
+    </div>
+  </div>
+</div>
+</body>
+</html>
+{{end}}
