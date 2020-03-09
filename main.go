@@ -39,10 +39,10 @@ func main() {
 		Dialect:  "mysql",
 		Host:     "127.0.0.1",
 		Port:     "3306",
-		Username: "dongjulee",
-		Password: "djfrnf081@",
-		Name:     "fofu",
-		Charset:  "utf8",
+		Username: "",
+		Password: "",
+		Name:     "",
+		Charset:  "",
 	}
 	db := config.DB{}
 	if err := db.Initialize(dbConfig); err != nil {

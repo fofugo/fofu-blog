@@ -52,6 +52,5 @@ func BenchmarkHandler(c echo.Context) error {
 		benchmarkTemplate.Benchmarks = append(benchmarkTemplate.Benchmarks, benchmark)
 		count++
 	}
-	fmt.Println(benchmarkTemplate)
 	return c.Render(http.StatusOK, "benchmark", benchmarkTemplate)
 }

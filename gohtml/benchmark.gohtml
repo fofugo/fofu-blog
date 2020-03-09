@@ -36,6 +36,7 @@
       {{range $benchmark := .Benchmarks}}
       <div id="{{$benchmark.Section}}">
         {{$benchmark.Title}}
+        <hr>
         {{$benchmark.Content}}
       </div>
       {{end}}
