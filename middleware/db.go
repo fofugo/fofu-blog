@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"operator/config"
+	"fofu-blog/config"
 
 	"github.com/labstack/echo"
 )

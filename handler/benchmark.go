@@ -21,7 +21,7 @@ type Benchmark struct {
 
 func BenchmarkHandler(c echo.Context) error {
 	type queryParam struct {
-		Id int `validate:"required" query:"id"`
+		Id int `validate:"required" param:"id"`
 	}
 	var benchmarkTemplate benchmarkTemplate
 	input := queryParam{}
@@ -40,7 +40,7 @@ func BenchmarkHandler(c echo.Context) error {
 	if err != nil {
 		panic(err)
 	}
-	rows, err := db.Query("SELECT title,content FROM benchmark WHERE id=?", input.Id)
+	rows, err := db.Query("SELECT title,content FROM benchmark WHERE benchmark_id=?", input.Id)
 	if err != nil {
 		panic(err)
 	}

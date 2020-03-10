@@ -1,9 +1,9 @@
 package main
 
 import (
-	"benchmark-site/handler"
-	"benchmark-site/middleware"
-	"operator/config"
+	"fofu-blog/handler"
+	"fofu-blog/middleware"
+	"fofu-blog/config"
 	"os"
 	"time"
 
@@ -59,6 +59,6 @@ func main() {
 	e.Static("/", "assets")
 	e.GET("/board", handler.BoardHandler)
 	e.GET("/post", handler.PostHandler)
-	e.GET("/benchmark", handler.BenchmarkHandler)
-	e.Logger.Fatal(e.Start(":1323"))
+	e.GET("/benchmark/:id", handler.BenchmarkHandler)
+	e.Logger.Fatal(e.Start(":80"))
 }
