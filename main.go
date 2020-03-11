@@ -1,9 +1,9 @@
 package main
 
 import (
+	"fofu-blog/config"
 	"fofu-blog/handler"
 	"fofu-blog/middleware"
-	"fofu-blog/config"
 	"os"
 	"time"
 
@@ -57,7 +57,7 @@ func main() {
 
 	// 첫 화면
 	e.Static("/", "assets")
-	e.GET("/board", handler.BoardHandler)
+	e.GET("/", handler.HomeHandler)
 	e.GET("/post", handler.PostHandler)
 	e.GET("/benchmark/:id", handler.BenchmarkHandler)
 	e.Logger.Fatal(e.Start(":80"))

@@ -14,7 +14,7 @@ type board struct {
 	Title    string
 }
 
-func BoardHandler(c echo.Context) error {
+func HomeHandler(c echo.Context) error {
 	type queryParam struct {
 		Page int `validate:"max=100,min=0" query:"page"`
 	}
@@ -38,5 +38,5 @@ func BoardHandler(c echo.Context) error {
 		rows.Scan(&board.Id, &board.Category, &board.Title)
 		boards = append(boards, board)
 	}
-	return c.Render(http.StatusOK, "board", boards)
+	return c.Render(http.StatusOK, "Home", boards)
 }
