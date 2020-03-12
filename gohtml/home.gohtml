@@ -1,0 +1,46 @@
+{{define "home"}}
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+</head>
+  <body>
+    {{template "nav"}}
+
+<main role="main">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Well come, fofugo!</h1>
+      <p>We will privide useful information based on golang. We've been providing some results through some experiments on things that you've been curious about but haven't tried</p>
+      <p><a class="btn btn-primary btn-lg" target="_blank" href="https://github.com/fofugo" role="button">Github</a></p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Benchmark</h2>
+        <p>When you develop your product in this real world, you often get some question, So do I. So I experiment on your behalf to answer questions.</p>
+
+      </div>
+      <div class="col-md-4">
+        <h2>Golang</h2>
+        <p>
+The go language is currently in the limelight, and many frameworks and libraries are emerging. However, since it is a recent language, there is insufficient information on how to use it on the Internet. So, I want to explain more detailed usage.</p>
+
+      </div>
+    </div>
+    <hr>
+  </div> <!-- /container -->
+</main>
+<footer class="container">
+</footer>
+</body>
+</html>
+{{end}}

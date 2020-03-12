@@ -1,0 +1,93 @@
+{{define "benchmark"}}
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+  </head>
+  <style>
+  body {
+    position: relative;
+  }
+  ul.nav-pills {
+    top: 300px;
+    position: fixed;
+  }
+  </style>
+  <body data-spy="scroll" data-target="#myScrollspy" data-offset="1">
+    {{template "nav"}}
+    {{$Page := .CurrentPage}}
+    {{$No := .No}}
+    {{$Time := .Time}}
+    {{$Context := .Context}}
+    <table class="table table-bordered table-dark">
+      <thead>
+        <col width="20%">
+        <col width="80%">
+        <tr>
+          <th>Time</th>
+          <th>Context</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{range $benchmarkNo := .BenchmarkNos}}
+          <tr>
+            <td>{{$benchmarkNo.Time}}</td>
+            <td><a style="color:#FFFFFF;" href="/benchmark?page={{$Page}}&no={{$benchmarkNo.No}}">{{$benchmarkNo.Context}}</a></td>
+          </tr>
+        {{end}}
+      </tbody>
+    </table>
+
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        {{range $page := .Pages}}
+        <li class="page-item"><a class="page-link" href="/benchmark?page={{$page}}&no={{$No}}">{{$page}}</a></li>
+        {{end}}
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+      <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">{{$Context}}<span class="badge badge-secondary" style="font-size: 10px;" >{{$Time}}</span></h1>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <nav class="col-sm-3 col-4" id="myScrollspy">
+            <ul class="nav nav-pills flex-column">
+              {{range $benchmark := .Benchmarks}}
+              <li class="nav-item">
+                <a class="nav-link" href="#{{$benchmark.Section}}">{{$benchmark.Title}}</a>
+              </li>
+              {{end}}
+            </ul>
+          </nav>
+          <div class="col-sm-9 col-8">
+            {{range $benchmark := .Benchmarks}}
+            <div id="{{$benchmark.Section}}">
+              <h1>{{$benchmark.Title}}</h1>
+              <hr>
+              {{$benchmark.Content}}
+            </div>
+            {{end}}
+          </div>
+        </div>
+      </div>
+
+  </body>
+  <footer class="pt-4 my-md-5 pt-md-5 border-top">
+
+  </footer>
+</html>
+{{end}}
