@@ -34,7 +34,6 @@
       <tbody>
         {{range $echoBoardNo := .EchoBoardNos}}
           <tr>
-            <td>{{$echoBoardNo.Time}}</td>
             <td><a style="color:#FFFFFF;" href="/echo?page={{$Page}}&no={{$echoBoardNo.No}}">{{$echoBoardNo.Context}}</a></td>
           </tr>
         {{end}}
@@ -85,7 +84,6 @@
       </div>
   </body>
   <footer class="pt-4 my-md-5 pt-md-5 border-top">
-
   </footer>
 </html>
 {{end}}

@@ -34,7 +34,6 @@
       <tbody>
         {{range $benchmarkNo := .BenchmarkNos}}
           <tr>
-            <td>{{$benchmarkNo.Time}}</td>
             <td><a style="color:#FFFFFF;" href="/benchmark?page={{$Page}}&no={{$benchmarkNo.No}}">{{$benchmarkNo.Context}}</a></td>
           </tr>
         {{end}}

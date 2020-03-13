@@ -54,7 +54,6 @@ func main() {
 		templates: template.Must(template.ParseGlob("gohtml/*.gohtml")),
 	}
 	e.Renderer = template
-
 	// 첫 화면
 	e.Static("/", "assets")
 	e.GET("/", handler.HomeHandler)
