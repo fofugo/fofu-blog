@@ -34,6 +34,7 @@
       <tbody>
         {{range $echoBoardNo := .EchoBoardNos}}
           <tr>
+            <td>{{$echoBoardNo.Time}}</td>
             <td><a style="color:#FFFFFF;" href="/echo?page={{$Page}}&no={{$echoBoardNo.No}}">{{$echoBoardNo.Context}}</a></td>
           </tr>
         {{end}}
@@ -58,7 +59,7 @@
       </ul>
     </nav>
       <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <h1 class="display-4">{{$Context}}<span class="badge badge-secondary" style="font-size: 10px;" >{{$Time}}</span></h1>
+        <h1 class="display-4">{{$Context}}</h1>
       </div>
       <div class="container-fluid">
         <div class="row">

@@ -34,6 +34,7 @@
       <tbody>
         {{range $benchmarkNo := .BenchmarkNos}}
           <tr>
+            <td>{{$benchmarkNo.Time}}</td>
             <td><a style="color:#FFFFFF;" href="/benchmark?page={{$Page}}&no={{$benchmarkNo.No}}">{{$benchmarkNo.Context}}</a></td>
           </tr>
         {{end}}
@@ -59,7 +60,7 @@
     </nav>
 
       <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <h1 class="display-4">{{$Context}}<span class="badge badge-secondary" style="font-size: 10px;" >{{$Time}}</span></h1>
+        <h1 class="display-4">{{$Context}}</h1>
       </div>
       <div class="container-fluid">
         <div class="row">
