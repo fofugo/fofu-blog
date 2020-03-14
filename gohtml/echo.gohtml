@@ -42,22 +42,13 @@
         {{end}}
       </tbody>
     </table>
-
     <nav aria-label="Page navigation example">
       <ul class="pagination">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
         {{range $page := .Pages}}
-        <li class="page-item"><a class="page-link" href="/echo?page={{$page}}&no={{$No}}">{{$page}}</a></li>
+        <li class="page-item"><a class="page-link" href=""/echo?page={{$page}}&no={{$No}}"">{{$page}}</a></li>
         {{end}}
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
       </ul>
     </nav>
       <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
