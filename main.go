@@ -4,8 +4,6 @@ import (
 	"fofu-blog/config"
 	"fofu-blog/handler"
 	"fofu-blog/middleware"
-	"os"
-	"time"
 
 	"io"
 	"text/template"
@@ -26,23 +24,15 @@ func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Con
 
 func main() {
 	e := echo.New()
-	t := time.Now()
-	startTime := t.Format("2006_01_02__15_04")
-	f, err := os.OpenFile("log/log_"+startTime+".log", os.O_TRUNC|os.O_CREATE|os.O_RDWR, 0644)
-	defer f.Close()
-	if err != nil {
-		return
-	}
-	e.Logger.SetOutput(f)
 
 	dbConfig := config.DbConfig{
 		Dialect:  "mysql",
 		Host:     "127.0.0.1",
 		Port:     "3306",
-		Username: "",
-		Password: "",
-		Name:     "",
-		Charset:  "",
+		Username: "dongjulee",
+		Password: "djfrnf081@",
+		Name:     "fofu",
+		Charset:  "utf8",
 	}
 	db := config.DB{}
 	if err := db.Initialize(dbConfig); err != nil {
